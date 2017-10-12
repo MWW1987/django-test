@@ -1,0 +1,22 @@
+{% extends "basic_app/base.html" %}
+{% load staticfiles %}
+
+{% block title_block %} صفحه ثبت نام {% endblock %}
+
+{% block bodyblock %}
+  <div class="jumbotorn">
+    {% if registered %}
+      <h1>ممنون برای ثبت نام</h1>
+    {% else %}
+      <h1>اینجا ثبت نام کن</h1>
+      <h3>این فرم را پر کن</h3>
+      <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" name="" value="ثبت نام کن">
+      </form>
+        {% endif %}
+  </div>
+
+{% endblock %}
